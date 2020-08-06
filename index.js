@@ -41,17 +41,24 @@ function renderChoices(){
 // Handles Submission of Choice
 function checkSubmission(){
     $('#js-submit').on('click', function(e) {
-        if(STORE.currentQuestion <= 9){
-            if($(`input:radio[name="choice"]:checked`).val() === STORE.questions[STORE.currentQuestion].correctAnswer){
-                STORE.currentQuestion++;
-                STORE.currentScore++;
+        if($('input[name="choice"]:checked').length == 0){
+            alert('Please Slect an Answer to Continue!')
+            console.log('No Answer Provided, Try Again')
+        }
+        else if($(`input:radio[name="choice"]:checked`).val() === STORE.questions[STORE.currentQuestion].correctAnswer){
+            STORE.currentQuestion++;
+            STORE.currentScore++;
+            if(STORE.currentQuestion >= 10){
+                renderFinal();
+            }else{
                 renderCorrect();
-            }else if($(`input:radio[name="choice"]:checked`).val() != STORE.questions[STORE.currentQuestion].correctAnswer){
-                STORE.currentQuestion++;
+            }
+        }else if($(`input:radio[name="choice"]:checked`).val() != STORE.questions[STORE.currentQuestion].correctAnswer){
+            STORE.currentQuestion++;
+            if(STORE.currentQuestion >= 10){
+                renderFinal();
+            }else{
                 renderIncorrect();
-            }else {
-                alert('Please Slect an Answer to Continue!')
-                console.log('No Answer Provided, Try Again')
             }
         }
         e.preventDefault();
@@ -85,6 +92,9 @@ function renderFinal(){
     $('#js-quiz').hide();
     $('$js-final').show();
     $('#js-final-score').text(STORE.currentScore)
+    $('#js-start-new').on('click', function(){
+        location.reload();
+    });
 }
 
 function renderQuiz(){
