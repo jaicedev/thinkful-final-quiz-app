@@ -1,0 +1,133 @@
+html {
+    display: flex;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    background: rgb(240, 240, 240);
+}
+body {
+    padding-top: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    border: 1px solid black;
+    width: 75%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+}
+h1, h2 {
+    margin: 0;
+}
+.page-title {
+    font-size: 3rem;
+}
+.call-to-action {
+    font-style: italic;
+}
+.current-question {
+    color: gray;
+    font-style: italic;
+    padding-top: 1%;
+    margin: 0;
+}
+.question {
+    font-size: 2rem;
+}
+.answer {
+    font-size: 1.4rem;
+    text-align: center;
+}
+.container {
+    flex-direction: column;
+    text-align: center;
+}
+.answer-selection {
+    display: inline-block;
+    list-style: none;
+    width: 100%;;
+    padding-left: 0%;
+    margin-top: 0;
+    margin-bottom: 5%;
+}
+.question-button {
+    width: 30%;
+    text-align: center;
+    font-style: italic;
+    font-size: 2rem;
+    height: 3rem;
+    border-style: none;
+}
+.question-button:hover {
+    cursor: pointer;
+    border-style: solid;
+    background: gray;
+    color: white;
+}
+.start-button {
+    width: 50%;
+    font-size: 2rem;
+    border-style: none;
+    font-style: italic;
+}
+.start-button:hover {
+    cursor: pointer;
+    border-style: solid;
+    background: gray;
+    color: white;
+}
+.main-img {
+    width: 20%;
+    margin: 5% 0;
+}
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.correct {
+    font-size: 10rem;
+    margin: 5%;
+    color: rgb(57, 57, 230);
+}
+.next-button {
+    width: 100%;
+    font-size: 2rem;
+    border-style: none;
+    height: 3rem;
+    font-style: italic;
+    padding: 0 5vh;
+}
+.next-button:hover {
+    cursor: pointer;
+    border-style: solid;
+    background: gray;
+    color: white;
+}
+.incorrect {
+    font-size: 10rem;
+    margin: 5%;
+    color: rgb(230, 57, 66);
+}
+
+
+/* Temporary Wireframe Navigation Menu Styling */
+.wireframe-nav {
+    list-style: none;
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+.nav-item {
+    padding: 5%;
+}
+.nav-link {
+    text-decoration: none;
+    color: gray;
+}
+.nav-link:hover {
+    color: black;
+}

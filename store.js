@@ -104,4 +104,4 @@ const STORE = {
     ],
     currentQuestion: 0,
     currentScore: 0
-}
+};
