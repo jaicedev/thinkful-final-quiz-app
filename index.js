@@ -1,3 +1,4 @@
+
 // Home Screen Configuration
 
 function homeScreen(){
@@ -48,18 +49,10 @@ function checkSubmission(){
         else if($(`input:radio[name="choice"]:checked`).val() === STORE.questions[STORE.currentQuestion].correctAnswer){
             STORE.currentQuestion++;
             STORE.currentScore++;
-            if(STORE.currentQuestion >= 10){
-                renderFinal();
-            }else{
-                renderCorrect();
-            }
+            renderCorrect();
         }else if($(`input:radio[name="choice"]:checked`).val() != STORE.questions[STORE.currentQuestion].correctAnswer){
             STORE.currentQuestion++;
-            if(STORE.currentQuestion >= 10){
-                renderFinal();
-            }else{
-                renderIncorrect();
-            }
+            renderIncorrect();
         }
         e.preventDefault();
     });
@@ -69,9 +62,13 @@ function renderCorrect(){
     $('#js-correct').show();
     $('#js-quiz').hide();
     $('#js-next-correct').on('click', function(){
-        $('#js-correct').hide();
-        $('#js-quiz').show();
-        renderQuiz();
+        if(STORE.currentQuestion === 10){
+            renderFinal();
+        }else{
+            $('#js-correct').hide();
+            $('#js-quiz').show();
+            renderQuiz();
+        }
     });
     console.log('Correct Answer Given')
 }
@@ -81,17 +78,22 @@ function renderIncorrect(){
     $('#js-quiz').hide();
     $('#js-correct-answer').text(STORE.questions[STORE.currentQuestion -1].correctAnswer);
     $('#js-next-incorrect').on('click', function(){
-        $('#js-incorrect').hide();
-        $('#js-quiz').show();
-        renderQuiz();
+        if(STORE.currentQuestion === 10){
+            renderFinal();
+        }else{
+            $('#js-incorrect').hide();
+            $('#js-quiz').show();
+            renderQuiz();
+        }
     });
     console.log('Incorrect Answer Given')
 }
 
 function renderFinal(){
-    $('#js-quiz').hide();
-    $('$js-final').show();
-    $('#js-final-score').text(STORE.currentScore)
+    $('#js-correct').hide();
+    $('#js-incorrect').hide();
+    $('#js-final').show();
+    $('#js-final-score').text('Your Final Score is ' + STORE.currentScore + '/' + STORE.questions.length)
     $('#js-start-new').on('click', function(){
         location.reload();
     });
@@ -104,12 +106,5 @@ function renderQuiz(){
     renderChoices();
 }
 
-function checkQuizOver(){
-    if(STORE.currentQuestion === 10){
-        renderFinal();
-    }
-}
-
-$(checkQuizOver);
 $(homeScreen);
 $(checkSubmission);
